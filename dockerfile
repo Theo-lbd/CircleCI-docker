@@ -20,4 +20,5 @@ ENV PYTHONPATH=/app/src
 
 # Étape : lancer le linter + les tests à la construction
 RUN pylint src/ --disable=C0114,C0116,R1705 || true
-CMD ["pytest", "tests"]
+CMD ["gunicorn", "-b", "0.0.0.0:5000", "page_tracker.app:app"]
+

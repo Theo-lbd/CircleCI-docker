@@ -1,9 +1,7 @@
-# test/unit/test_app.py
+from flask import Flask
 
-import pytest
+app = Flask(__name__)
 
-from page_tracker import app
-
-@pytest.fixture
-def http_client():
-    return app.test_client()
+@app.route("/")
+def index():
+    return "Hello from Docker!"
