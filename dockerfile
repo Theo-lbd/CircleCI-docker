@@ -13,7 +13,7 @@ COPY src/ ./src
 COPY tests/ ./tests
 
 # Étape : permissions (nécessaire si le build inclut des fichiers egg-info)
-RUN chmod 755 -R src/page_tracker.egg-info || true
+RUN test ! -e src/page_tracker.egg-info || chmod 755 -R src/page_tracker.egg-info
 
 # Étape : définir le PYTHONPATH pour les imports relatifs
 ENV PYTHONPATH=/app/src
